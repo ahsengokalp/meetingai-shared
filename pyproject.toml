@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "meetingai-shared"
+version = "0.1.0"
+description = "Shared config, contracts, and repository layer for MeetingAI"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "psycopg[binary]>=3.2,<4",
+  "python-dotenv>=1.0,<2",
+]
+
+[tool.setuptools]
+packages = [
+  "meetingai_shared",
+  "meetingai_shared.contracts",
+  "meetingai_shared.repositories",
+]
+
+[tool.setuptools.package-dir]
+"meetingai_shared" = "."
+"meetingai_shared.contracts" = "contracts"
+"meetingai_shared.repositories" = "repositories"
