@@ -2,7 +2,11 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-load_dotenv()
+_cwd_dotenv = Path.cwd() / ".env"
+if _cwd_dotenv.exists():
+    load_dotenv(_cwd_dotenv)
+else:
+    load_dotenv()
 
 
 def env_bool(name: str, default: bool) -> bool:
