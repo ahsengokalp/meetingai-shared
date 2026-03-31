@@ -190,6 +190,8 @@ class PostgresMeetingStore(StoreNoteMailParticipantMixin):
         stamp = start_dt.strftime("%Y%m%d_%H%M%S")
         session_name = f"session_{stamp}"
         meeting_title = str(title or "").strip()
+        if not meeting_title:
+            meeting_title = f"{owner_key} Dikkan Toplantısı"
 
         with self.connection() as conn:
             user_id = self._ensure_user(conn, owner_key)
